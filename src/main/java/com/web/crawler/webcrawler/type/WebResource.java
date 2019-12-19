@@ -1,5 +1,9 @@
 package com.web.crawler.webcrawler.type;
 
+import com.web.crawler.webcrawler.utils.DummyURLUtil;
+import org.apache.dubbo.common.URL;
+import org.springframework.util.StringUtils;
+
 import java.util.List;
 import java.util.Map;
 
@@ -35,5 +39,14 @@ public class WebResource {
 
     public String getParameter(String key) {
         return this.parameters.get(key);
+    }
+
+
+    public URL getURL() {
+        if (StringUtils.isEmpty(resourceType)) {
+            return DummyURLUtil.getURL().addParameter("type","novel");
+        }
+
+        return DummyURLUtil.getURL().addParameter("type",resourceType);
     }
 }
