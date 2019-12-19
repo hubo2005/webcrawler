@@ -1,0 +1,2 @@
+novel=com.web.crawler.webcrawler.novel.NovelCrawler
+stock=com.web.crawler.webcrawler.finance.StockDataCrawler
