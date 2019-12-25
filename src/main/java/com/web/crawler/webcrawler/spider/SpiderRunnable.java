@@ -1,20 +1,33 @@
 package com.web.crawler.webcrawler.spider;
 
-import com.web.crawler.webcrawler.type.Crawler;
-import com.web.crawler.webcrawler.type.WebResource;
-import org.apache.dubbo.common.extension.ExtensionLoader;
+
+import com.web.crawler.webcrawler.downloader.HttpClientDownloader;
+import com.web.crawler.webcrawler.model.Page;
+import com.web.crawler.webcrawler.model.Request;
+import com.web.crawler.webcrawler.model.Site;
+import com.web.crawler.webcrawler.utils.SpringUtils;
+import org.springframework.beans.factory.annotation.Autowired;
 
 public class SpiderRunnable implements Runnable {
 
-    private final WebResource resource;
+    private final Site site;
 
-    public SpiderRunnable(WebResource webResource) {
-        this.resource = webResource;
+    @Autowired
+    HttpClientDownloader downloader;
+
+    public SpiderRunnable(Site site) {
+        this.site = site;
     }
 
     @Override
     public void run() {
-        Crawler crawler = ExtensionLoader.getExtensionLoader(Crawler.class).getAdaptiveExtension();
-        crawler.crawlData(resource.getURL(), resource);
+        if (downloader ==null) {
+            downloader = SpringUtils.getBean(HttpClientDownloader.class);
+        }
+        for (Request request : site.getSiteRequests()) {
+            Page page = downloader.download(request);
+        }
+        //System.out.println(crawlTask.getCrawlSites().size());
+        System.out.println("print in abstract");
     }
 }
