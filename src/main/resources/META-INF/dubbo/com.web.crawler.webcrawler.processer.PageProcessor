@@ -1,1 +1,1 @@
-novel=com.web.crawler.webcrawler.processer.NovelPageProcessor
+novel=com.web.crawler.webcrawler.processer.novel.NovelPageProcessor

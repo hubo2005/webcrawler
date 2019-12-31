@@ -1,6 +1,5 @@
-package com.web.crawler.webcrawler.model;
+package com.web.crawler.webcrawler.selector;
 
-import com.web.crawler.webcrawler.selector.*;
 import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;
 
@@ -11,7 +10,7 @@ import java.util.ListIterator;
 /**
  * @author code4crafer@gmail.com
  */
-public class HtmlNode  extends AbstractSelectable {
+public class HtmlNode extends AbstractSelectable {
 
     private final List<Element> elements;
 
@@ -47,7 +46,7 @@ public class HtmlNode  extends AbstractSelectable {
     @Override
     public Selectable selectList(Selector selector) {
         if (selector instanceof BaseElementSelector) {
-            return selectElements((BaseElementSelector) selector);
+           return selectElements((BaseElementSelector) selector);
         }
         return selectList(selector, getSourceTexts());
     }
