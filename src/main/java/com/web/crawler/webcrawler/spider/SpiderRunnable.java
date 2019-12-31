@@ -1,6 +1,7 @@
 package com.web.crawler.webcrawler.spider;
 
 
+import com.web.crawler.webcrawler.constant.CrawlerConstants;
 import com.web.crawler.webcrawler.downloader.HttpClientDownloader;
 import com.web.crawler.webcrawler.model.Page;
 import com.web.crawler.webcrawler.model.Request;
@@ -26,6 +27,8 @@ public class SpiderRunnable implements Runnable {
         }
         for (Request request : site.getSiteRequests()) {
             Page page = downloader.download(request);
+            ParsePageJob pageParseJob = new ParsePageJob(page);
+            CrawlerConstants.parsePageJobs.put(pageParseJob);
         }
         //System.out.println(crawlTask.getCrawlSites().size());
         System.out.println("print in abstract");

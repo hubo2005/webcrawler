@@ -1,7 +1,9 @@
 package com.web.crawler.webcrawler.model;
 
 
+import com.web.crawler.webcrawler.utils.DummyURLUtil;
 import com.web.crawler.webcrawler.utils.HttpConstant;
+import org.apache.dubbo.common.URL;
 import org.apache.dubbo.common.utils.StringUtils;
 
 import java.util.ArrayList;
@@ -21,7 +23,7 @@ public class Page {
 
     private String rawText;
 
-    //private Selectable url;
+    private String url;
 
     private Map<String, List<String>> headers;
 
@@ -218,6 +220,18 @@ public class Page {
 
     public void setCharset(String charset) {
         this.charset = charset;
+    }
+
+    public String getUrl() {
+        return url;
+    }
+
+    public void setUrl(String url) {
+        this.url = url;
+    }
+
+    public URL getDubboURL(){
+        return DummyURLUtil.getURL().addParameter("page.processor","novel");
     }
 
     @Override

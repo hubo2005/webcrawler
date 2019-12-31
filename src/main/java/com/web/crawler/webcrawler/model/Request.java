@@ -17,6 +17,10 @@ public class Request implements Serializable {
 
     private HttpRequestBody requestBody;
 
+    private String domain;
+
+    private Site siteInfo;
+
     /**
      * Store additional information in extras.
      */
@@ -164,6 +168,22 @@ public class Request implements Serializable {
     public Request setCharset(String charset) {
         this.charset = charset;
         return this;
+    }
+
+    public String getDomain() {
+        return domain;
+    }
+
+    public void setDomain(String domain) {
+        this.domain = domain;
+    }
+
+    public Site getSiteInfo() {
+        return siteInfo;
+    }
+
+    public void setSiteInfo(Site siteInfo) {
+        this.siteInfo = siteInfo;
     }
 
     @Override

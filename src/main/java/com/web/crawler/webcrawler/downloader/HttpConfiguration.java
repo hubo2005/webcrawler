@@ -41,7 +41,7 @@ public class HttpConfiguration {
     }
 
 
-    public static HttpConfiguration getInstance() {
+    public static HttpConfiguration getDefaultConfiguration() {
         return new HttpConfiguration();
     }
 
